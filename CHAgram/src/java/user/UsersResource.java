@@ -13,6 +13,9 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
+import com.google.gson.Gson;
+
+import service.UserFacadeREST;
 /**
  * REST Web Service
  *
@@ -37,8 +40,10 @@ public class UsersResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public String getJson() {
-        //TODO return proper representation object
-        throw new UnsupportedOperationException();
+        UserFacadeREST uf = new UserFacadeREST();
+        Gson gs = new Gson();
+        
+        return gs.toJson(uf.findAll());
     }
 
     /**
